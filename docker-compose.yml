@@ -1,0 +1,9 @@
+services:
+  dev-server:
+    image: node:lts-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: node index.js
