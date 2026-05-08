@@ -2,10 +2,11 @@
   "name": "app",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.3.0",
-    "globals": "^17.6.0"
+    "globals": "^17.6.0",
+    "jest": "^30.4.1"
   }
 }
