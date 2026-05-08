@@ -1,6 +1,8 @@
 import express from "express";
 const app = express();
-const1 PORT = 3000;
+
+//測試錯誤, 把const故意寫成const1
+const PORT = 3000;
 
 app.get("/", (req, res) => {
   res.json({
