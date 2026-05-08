@@ -23,18 +23,16 @@ jobs:
         with:
           node-version: "24"
           cache: "npm"
-          cache-dependency-path: "./app/package-lock.json"
+          cache-dependency-path: "./package-lock.json"
 
       # 2. 安裝套件（包含 eslint）
       - name: Install dependencies
         run: |
-          cd app
           npm install
 
       # 3. 執行語法檢查（如果失敗，Workflow 會在這裡停住）
       - name: Run Linting
         run: |
-          cd app
           npm run lint
 
       - name: Login to GitHub Container Registry
