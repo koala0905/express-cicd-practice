@@ -1,5 +1,7 @@
 services:
   dev-server:
+    profiles:
+      - development
     image: node:lts-alpine
     working_dir: /app
     volumes:
@@ -7,3 +9,21 @@ services:
     ports:
       - "3000:3000"
     command: node index.js
+
+  prod-server:
+    profiles:
+      - deployment
+    image: ghcr.io/koala0905/express-cicd-practice:latest
+    ports:
+      - "80:3000" # 避開開發用的 3000 埠口
+    restart: always
+
+  # 3. Watchtower 監控工具
+  watchtower:
+    profiles:
+      - deployment
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --cleanup prod-server
+    restart: always
