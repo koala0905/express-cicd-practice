@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
 // 新增的路由
 app.get("/info", (req, res) => {
   res.json({
-    version: "1.1.0",
-    description: "This is a feature branch test.",
+    version: "1.2.0",
+    description: "This is a feature branch test. (updated)",
   });
 });
 
