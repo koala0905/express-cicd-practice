@@ -14,6 +14,8 @@ services:
     profiles:
       - deployment
     image: ghcr.io/koala0905/express-cicd-practice:latest
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     ports:
       - "80:3000" # 避開開發用的 3000 埠口
     restart: always
@@ -25,5 +27,5 @@ services:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --cleanup prod-server
+    command: --label-enable --cleanup --rolling-restart --interval 60
     restart: always
